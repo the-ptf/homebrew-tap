@@ -1,0 +1,30 @@
+name: Update Milagre cask
+on:
+  schedule:
+    - cron: '23 */4 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: update-cask
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify release downloads and update cask
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node .github/scripts/update.mjs
+      - name: Commit verified cask update
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Casks/milagre.rb
+          git commit -m 'Update Milagre to latest stable release'
+          git push
