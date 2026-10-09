@@ -1,8 +1,8 @@
 cask "milagre" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.105.5"
-  sha256 arm: "063ed73139f5425d2fab4a53fc0eb0055791c214842f2a584811de9d8c4e50bb", intel: "bf5dd76a5f068d1c3f6525443cfeb9284577e0d5a491de02cbcd4fe994d77870"
+  version "0.147.0"
+  sha256 arm: "fe4b0374598108b2c00b63f9d72170462bd499fd604c3db136484e41b8ea0e06", intel: "463e2bb2670a051a4ccd2000c0784ebfaad902c27bdca075a64f8214a1ec4fa1"
 
   url "https://github.com/the-ptf/milagre-ade/releases/download/v#{version}/Milagre-#{version}-#{arch}.dmg"
   name "Milagre"
