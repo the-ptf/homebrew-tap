@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
-const repository = 'https://github.com/the-ptf/milagre-ade';
-const response = await fetch('https://api.github.com/repos/the-ptf/milagre-ade/releases/latest', {
+const repository = 'https://github.com/the-ptf/milagre';
+const response = await fetch('https://api.github.com/repos/the-ptf/milagre/releases/latest', {
   headers: process.env.GH_TOKEN ? { Authorization: `Bearer ${process.env.GH_TOKEN}` } : {},
 });
 if (!response.ok) throw new Error(`Release lookup failed: HTTP ${response.status}`);
